@@ -11,6 +11,8 @@ fi
 # User specific aliases and functions
 
 # Alias stuffs
+shopt -s expand_aliases
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -21,7 +23,28 @@ alias lsd='ls -lh'
 
 alias record-audio='ffmpeg -f pulse -i default'
 alias python='python3'
+alias alsamixer='alsamixer -c 1'
+#discord_gpu() {
+#        ~/bin/discord "$@"
+#}
+#export -f discord_gpu
+alias discord='discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy'
 
+#alias current-command='echo $BASH_COMMAND'
+
+#echo -en "\033]0;\u@\h - $(history | cut -c 8-)\a"
+
+TITLEBAR='\[\033]0;\u at \h in \w ($(history 1 | cut -c 8-))\]'
+
+#set-window-title() {
+#      echo -en "\033]0;\u@\h - $(history | cut -c 8-)\a"
+#}
+
+#if [[ "$PROMPT_COMMAND" ]]; then
+#      export PROMPT_COMMAND="$PROMPT_COMMAND;set-window-title"
+#else
+#      export PROMPT_COMMAND=set-window-title
+#fi
 
 #
 # Define some colors first: Capitals denote bold
@@ -33,7 +56,7 @@ DGRAY='\e[1;90m'
 red='\e[0;31m'
 RED='\e[1;31m'
 lred='\e[0;91m'
-LRED='\e[0;91m'
+LRED='\e[1;91m'
 green='\e[0;32m'
 GREEN='\e[1;32m'
 lgreen='\e[0;92m'
@@ -91,5 +114,5 @@ function report_status() {
 }
 
 #export _PS1="\[$RED\]\u\[$NC\]@\[$YELLOW\]\h \[$yellow\]\w | \[$GREEN\]\V\s \[$BLUE\]\d \@ \[$NC\]"
-export _PS1="\[$LCYAN\]\u \[$dgray\]at \[$GREEN\]\h \[$dgray\]in \[$NC\]\w "
-export PROMPT_COMMAND='export PS1="${_status}${_PS1}$(_git_prompt)\[$NC\]\$ "'
+export _PS1="\[$LGREEN\]\u \[$dgray\]at \[$YELLOW\]\h \[$dgray\]in \[$LMAGENTA\]\w "
+export PROMPT_COMMAND='export PS1="$TITLEBAR${_status}${_PS1}$(_git_prompt)\[$NC\]\$ "'

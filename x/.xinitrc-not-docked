@@ -6,11 +6,20 @@ cd ~
 # add network, battery, date and time to xsetroot
 sh ~/bin/xsetloop-not-docked.sh &
 
+# set default audio device to be laptop speakers
+pacmd set-default-sink 1
+
 # set up wallpaper
-nitrogen --head=0 --set-zoom-fill ~/git/nordic-wallpapers/wallpapers/ign_unsplash7.png &
+#nitrogen --head=0 --set-zoom-fill ~/Pictures/Wallpapers/'10-6-Server.jpg'  &
+
+# start notifications daemon
+notification-daemon &
 
 # apply Xresources
 xrdb -merge ~/.Xresources
+
+# make cursor disappear after a couple of seconds
+unclutter --idle 4 -root &
 
 # start dwm
 redshift -O3500; xset r rate 300 50; exec dwm

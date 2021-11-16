@@ -1,0 +1,76 @@
+font:
+  normal:
+    family: JetBrains Mono
+    style: Regular
+  bold:
+    family: JetBrains Mono
+    style: Bold
+  italic:
+    family: JetBrains Mono
+    style: Italic
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+
+  size: 15
+
+background_opacity: 1
+
+window:
+    padding:
+        x: 10
+        y: 10
+
+colors:
+    primary:
+        background: '#121212'
+    
+    normal:
+        black:      '#1D1F21'
+        red:        '#C60D0B'
+        green:      '#1B8D20'
+        yellow:     '#F0E100'
+        blue:       '#1F7AFF'
+        magenta:    '#980AE0'
+        cyan:       '#34D9FF'
+        white:      '#A8A8A8'
+
+    bright:
+        black:      '#434343'
+        red:        '#F77021'
+        green:      '#2EFF25'
+        yellow:     '#FDF259'
+        blue:       '#4F9BFF'
+        magenta:    '#EE3AD8'
+        cyan:       '#56FFFB'
+        white:      '#FFFFFF'
+
+# Colors (Nord)
+#colors:
+   # Default colors
+#   primary:
+#     background: '#2E3440'
+#     foreground: '#D8DEE9'
+
+   # Normal colors
+#   normal:
+#     black:   '#3B4252'
+#     red:     '#BF616A'
+#     green:   '#A3BE8C'
+#     yellow:  '#EBCB8B'
+#     blue:    '#81A1C1'
+#     magenta: '#B48EAD'
+#     cyan:    '#88C0D0'
+#     white:   '#E5E9F0'
+
+#   # Bright colors
+#   bright:
+#     black:   '#4C566A'
+#     red:     '#BF616A'
+#     green:   '#A3BE8C'
+#     yellow:  '#EBCB8B'
+#     blue:    '#81A1C1'
+#     magenta: '#B48EAD'
+#     cyan:    '#8FBCBB'
+#     white:   '#ECEFF4'
+
