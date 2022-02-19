@@ -10,6 +10,9 @@ set laststatus=2
 set wildmenu
 set scrolloff=5
 
+" turn on spell checker for all markdown files
+autocmd FileType markdown setlocal spell
+
 " stolen from https://shapeshed.com/vim-statuslines/
 "function! GitBranch()
 "  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
@@ -38,21 +41,27 @@ set statusline=
 "set statusline+=%#PmenuSel#
 "set statusline+=%{StatuslineGit()}
 "set statusline+=%#LineNr#
-set statusline+=\%F
+set statusline+=\ %F
+set statusline+=\ %y
 set statusline+=\ %m
 set statusline+=\ %r
 set statusline+=%=
 set statusline+=%#CursorColumn#
-set statusline+=\ %L\ lines 
-set statusline+=\ %y
+"set statusline+=\ %L\ lines 
+"set statusline+=\ %y
 "set statusline+=\
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 "set statusline+=" >"
-set statusline+=\[%{&fileformat}\]
+set statusline+=\ [%{&fileformat}\]
 "set statusline+=" >"
 set statusline+=\ %p%%
 "set statusline+=" >"
-set statusline+=\ %l:%c 
+set statusline+=\ %l/%L:%c
+set statusline+=\ 
 
 
 hi StatusLine ctermbg=black
+hi Normal ctermbg=NONE
+let g:lightline = {
+                \ 'colorscheme': 'sitruuna',
+                            \ }

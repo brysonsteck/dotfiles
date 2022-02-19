@@ -1,16 +1,54 @@
 # executed by startx-not-docked
 # for use when dingo is NOT docked
 
-cd ~
+# load xinitrc.d stuff
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+
+if [ -f $sysresources ]; then
+  xrdb -merge $sysresources
+fi
+
+if [ -f $sysmodmap ]; then
+  xmodmap $sysmodmap
+fi
+
+if [ -f "$userresources" ]; then
+  xrdb -merge "$userresources"
+fi
+
+if [ -f "$usermodmap" ]; then
+  xmodmap "$usermodmap"
+fi
+
+# start some nice programs
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# start picom compositor
+picom -CG -I 0.1 -O 0.1 -o 0.0 --backend xrender --menu-opacity 1.0 & 
+
 
 # add network, battery, date and time to xsetroot
 sh ~/bin/xsetloop-not-docked.sh &
 
 # set default audio device to be laptop speakers
-pacmd set-default-sink 1
+pacmd set-default-sink alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink &
+
+pacmd set-sink-volume alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink 0 &
 
 # set up wallpaper
-#nitrogen --head=0 --set-zoom-fill ~/Pictures/Wallpapers/'10-6-Server.jpg'  &
+nitrogen --head=0 --set-zoom-fill ~/Pictures/Wallpapers/yosemite-edit.jpg  &
 
 # start notifications daemon
 notification-daemon &
@@ -20,6 +58,12 @@ xrdb -merge ~/.Xresources
 
 # make cursor disappear after a couple of seconds
 unclutter --idle 4 -root &
+
+# turn tearfree on
+xrandr --output eDP --auto --set TearFree on &
+
+# make sure wifi is back on
+nmcli radio wifi on &
 
 # start dwm
 redshift -O3500; xset r rate 300 50; exec dwm

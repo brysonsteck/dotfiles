@@ -21,9 +21,22 @@ alias ls='ls --color=auto'
 alias la='ls -a'
 alias lsd='ls -lh'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 alias record-audio='ffmpeg -f pulse -i default'
 alias python='python3'
 alias alsamixer='alsamixer -c 1'
+
+alias java='/usr/java/jdk-17.0.1/bin/java'
+alias java8='/usr/java/jre1.8.0_291/bin/java'
+alias java12='/usr/java/jdk-12.0.2/bin/java'
+
+alias todo='vim ~/TODO.md'
+alias iPhone='cd /home/bryson/Downloads/from-iPhone'
+
+alias gs='gs -dNOSAFER'
 #discord_gpu() {
 #        ~/bin/discord "$@"
 #}
@@ -81,16 +94,22 @@ lgray='\e[0;37m'
 LGRAY='\e[1;37m'
 NC='\e[0m' # No Color
 
+# 256color prompt variables
+color1='\e[38;5;39m'
+color2='\e[38;5;81m'
+color3='\e[38;5;77m'
+color4='\e[38;5;226m'
+
 # Taken from http://www.opinionatedprogrammer.com/2011/01/colorful-bash-prompt-reflecting-git-status/
 function _git_prompt() {
   local git_status="`git status -unormal 2>&1`"
   if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
     if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-      local ansi=$GREEN
+      local ansi=""
     elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-      local ansi=$RED
+      local ansi="!"
     else
-      local ansi=$YELLOW
+      local ansi="*"
     fi
     if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
       branch=${BASH_REMATCH[1]}
@@ -101,7 +120,7 @@ function _git_prompt() {
       echo local`"
     fi
     if ! [[ "$branch" =~ local ]]; then
-      echo -n '\['"$ansi"'\](in git branch '"$branch"') '
+      echo -n '\['"$color1"'\]'"$ansi"''"$branch"' '
     fi
   fi
 }
@@ -114,5 +133,14 @@ function report_status() {
 }
 
 #export _PS1="\[$RED\]\u\[$NC\]@\[$YELLOW\]\h \[$yellow\]\w | \[$GREEN\]\V\s \[$BLUE\]\d \@ \[$NC\]"
-export _PS1="\[$LGREEN\]\u \[$dgray\]at \[$YELLOW\]\h \[$dgray\]in \[$LMAGENTA\]\w "
-export PROMPT_COMMAND='export PS1="$TITLEBAR${_status}${_PS1}$(_git_prompt)\[$NC\]\$ "'
+#export _PS1="\[$dgray\]╭─[ \[$LGREEN\]\u\[$lgray\]@\[$YELLOW\]\h\[$dgray\] ] {\[$LBLUE\] \w\[$dgray\] } "
+#export _PS2="\[$dgray\]╰ "
+#export _PS1="\[$dgray\][ \[$GREEN\]\u\[$lgray\]@\[$LRED\]\h\[$dgray\] ] { \[$LCYAN\]\w\[$dgray\] } "
+export _PS1="\[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[$color3\]\@ \[$color2\]\s "
+export _PS2="\[$dgray\]"
+#export _PS1=" \u \`pwd\`"
+#export _PS2=""
+export PROMPT_COMMAND='export PS1="$TITLEBAR${_status}${_PS1}$(_git_prompt)\n${_PS2}\[$NC\]\$ "'
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash

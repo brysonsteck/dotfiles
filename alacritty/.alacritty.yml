@@ -12,14 +12,13 @@ font:
     family: JetBrains Mono
     style: Bold Italic
 
-  size: 15
-
-background_opacity: 1
+  size: 12.5 
 
 window:
     padding:
         x: 10
         y: 10
+    opacity: 0.85
 
 colors:
     primary:
@@ -27,10 +26,10 @@ colors:
     
     normal:
         black:      '#1D1F21'
-        red:        '#C60D0B'
-        green:      '#1B8D20'
+        red:        '#910002'
+        green:      '#00A406'
         yellow:     '#F0E100'
-        blue:       '#1F7AFF'
+        blue:       '#1152BD'
         magenta:    '#980AE0'
         cyan:       '#34D9FF'
         white:      '#A8A8A8'
