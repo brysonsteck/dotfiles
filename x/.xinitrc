@@ -47,7 +47,8 @@ sh ~/.screenlayout/screenlayout.sh &
 pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo &
 
 # add weather, date and time to xsetroot
-sh ~/bin/xsetloop-docked.sh &
+#sh ~/bin/xsetloop-docked.sh &
+slstatus &
 
 # set up wallpapers
 wallpapers &
@@ -68,6 +69,6 @@ numlockx &
 nmcli radio wifi off &
 
 # start dwm
-xset r rate 300 50 &
+xset r rate 300 50; exec dwm
 #exec /home/bryson/bin/startdwm
-exec dwm
+

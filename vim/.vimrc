@@ -9,6 +9,7 @@ set backspace=indent,eol,start
 set laststatus=2
 set wildmenu
 set scrolloff=5
+set incsearch
 
 " turn on spell checker for all markdown files
 autocmd FileType markdown setlocal spell

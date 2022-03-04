@@ -26,10 +26,10 @@ colors:
     
     normal:
         black:      '#1D1F21'
-        red:        '#910002'
-        green:      '#00A406'
+        red:        '#DD0000'
+        green:      '#00CB07'
         yellow:     '#F0E100'
-        blue:       '#1152BD'
+        blue:       '#0E60E5'
         magenta:    '#980AE0'
         cyan:       '#34D9FF'
         white:      '#A8A8A8'
