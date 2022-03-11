@@ -1,7 +1,9 @@
 set nocompatible
-colorscheme sitruuna
+let g:gruvbox_guisp_fallback = "bg"
+colorscheme gruvbox
+set bg:dark
 set mouse=a
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set linebreak
 set ttymouse=sgr
 set cursorline
@@ -10,9 +12,13 @@ set laststatus=2
 set wildmenu
 set scrolloff=5
 set incsearch
+set relativenumber
+set ttimeout ttimeoutlen=25
 
 " turn on spell checker for all markdown files
 autocmd FileType markdown setlocal spell
+
+execute pathogen#infect()
 
 " stolen from https://shapeshed.com/vim-statuslines/
 "function! GitBranch()
@@ -61,8 +67,15 @@ set statusline+=\ %l/%L:%c
 set statusline+=\ 
 
 
-hi StatusLine ctermbg=black
+"hi StatusLine ctermbg=black
 hi Normal ctermbg=NONE
 let g:lightline = {
-                \ 'colorscheme': 'sitruuna',
-                            \ }
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'filename', 'readonly', 'modified' ] ],
+  \   'right':  [ [ 'lineinfo' ],
+  \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
+  \ }, 
+  \ }
+set noshowmode

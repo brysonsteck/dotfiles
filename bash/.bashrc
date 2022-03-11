@@ -39,6 +39,7 @@ alias todo='vim ~/TODO.md'
 alias iPhone='cd /home/bryson/Downloads/from-iPhone'
 
 alias gs='gs -dNOSAFER'
+alias django='python manage.py'
 
 alias smci='sudo make clean install'
 #discord_gpu() {
@@ -104,6 +105,13 @@ color2='\e[38;5;81m'
 color3='\e[38;5;77m'
 color4='\e[38;5;226m'
 
+function exit_code() {
+  local ERROR="$?"
+  if [[ ERROR -ne 0 ]]; then
+    echo -n ' \['"$RED"'\]'"$ERROR"''
+  fi
+}
+
 # Taken from http://www.opinionatedprogrammer.com/2011/01/colorful-bash-prompt-reflecting-git-status/
 function _git_prompt() {
   local git_status="`git status -unormal 2>&1`"
@@ -154,14 +162,15 @@ function get_random_ps1() {
 #export _PS1="\[$dgray\][ \[$GREEN\]\u\[$lgray\]@\[$LRED\]\h\[$dgray\] ] { \[$LCYAN\]\w\[$dgray\] } "
 # xterm color thing
 #export _PS1="\[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[$color3\]\@ \[$color2\]\s "
-export _PS1="\[$lgray\][ \[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[\e[0m$lgray\]]"
+#export _PS1="\[$lgray\][ \[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[\e[0m$lgray\]]"
+export _PS1="\[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\w \[$lgray\]]"
 export _PS2="\[$dgray\]"
 #export _PS1=" \u \`pwd\`"
 #export _PS2=""
-export PROMPT_COMMAND='export PS1="$TITLEBAR${_status}${_PS1}$(_git_prompt)\n${_PS2}\[$NC\]\$ "'
+export PROMPT_COMMAND='export PS1="$TITLEBAR${_status}${_PS1}$(exit_code)$(_git_prompt)\n${_PS2}\[$NC\]\$ "'
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+#. $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/completions/asdf.bash
 
 # run startup script if tty
 if [[ $TERM == 'linux' && $(hostname) == 'dingo' ]]; then
@@ -174,7 +183,7 @@ if [[ $TERM == 'linux' && $(hostname) == 'dingo' ]]; then
   while read -rs -N 1 key; do
     case $key in
       d) startx ;;
-      n) nstartx ;;
+      n) nstartx.sh ;;
       q) echo "Are you sure you want to shutdown? (y/n)";
       read -rs -N 1 key2; case $key2 in y) shutdown now ;; esac; ;;
       r) echo "Are you sure you want to reboot? (y/n)";

@@ -51,7 +51,7 @@ pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stere
 slstatus &
 
 # set up wallpapers
-wallpapers &
+wallpapers.sh &
 
 # start notifications daemon
 notification-daemon &
