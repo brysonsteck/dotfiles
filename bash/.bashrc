@@ -23,6 +23,8 @@ alias ls='ls --color=auto'
 alias la='ls -a'
 alias lsd='ls -lh'
 
+alias copy='xclip -sel c <'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -163,7 +165,7 @@ function get_random_ps1() {
 # xterm color thing
 #export _PS1="\[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[$color3\]\@ \[$color2\]\s "
 #export _PS1="\[$lgray\][ \[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[\e[0m$lgray\]]"
-export _PS1="\[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\w \[$lgray\]]"
+export _PS1="\[\e[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\w \[$lgray\]]"
 export _PS2="\[$dgray\]"
 #export _PS1=" \u \`pwd\`"
 #export _PS2=""

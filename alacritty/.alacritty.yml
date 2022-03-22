@@ -20,9 +20,11 @@ window:
         y: 10
     opacity: 0.9
 
+# Gruvbox dark
 colors:
     primary:
         background: '#282828'
+        foreground: '#fbf1c7'
     
     normal:
         black:      '#282828'

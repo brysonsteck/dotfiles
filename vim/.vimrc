@@ -14,6 +14,7 @@ set scrolloff=5
 set incsearch
 set relativenumber
 set ttimeout ttimeoutlen=25
+set clipboard=unnamedplus
 
 " turn on spell checker for all markdown files
 autocmd FileType markdown setlocal spell

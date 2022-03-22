@@ -69,6 +69,6 @@ numlockx &
 nmcli radio wifi off &
 
 # start dwm
-xset r rate 300 50; exec dwm
-#exec /home/bryson/bin/startdwm
+#xset r rate 300 50; exec dwm
+xset r rate 300 50; exec /home/bryson/bin/startdwm.sh
 
