@@ -1,0 +1,7 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+menupopup:not(.in-menulist){ --menu-color: var(--arrowpanel-color,white) !important; }
+
+menupopup {
+  --panel-padding: 5px 0 !important;
+}
