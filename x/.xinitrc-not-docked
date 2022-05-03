@@ -1,5 +1,6 @@
 # executed by startx-not-docked
 # for use when dingo is NOT docked
+export DOCKED=false
 
 # load xinitrc.d stuff
 
@@ -36,8 +37,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # start picom compositor
-picom -CG -I 0.1 -O 0.1 -o 0.0 --backend xrender --menu-opacity 1.0 & 
+picom --config ~/.config/picom.conf & 
 
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # add network, battery, date and time to xsetroot
 #sh ~/bin/xsetloop-not-docked.sh &
@@ -51,7 +53,7 @@ pacmd set-default-sink alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink &
 pacmd set-sink-volume alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink 0 &
 
 # set up wallpaper
-nitrogen --head=0 --set-zoom-fill ~/Pictures/Wallpapers/room.jpg  &
+nitrogen --head=0 --set-zoom-fill ~/Pictures/Wallpapers/solid-gruvbox.png &
 
 # start notifications daemon
 notification-daemon &

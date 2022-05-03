@@ -18,14 +18,71 @@ window:
     padding:
         x: 10
         y: 10
-    opacity: 0.9
+          #    opacity: 0.95
+
+#colors:
+#  primary:
+#    background: '#000000'
+#    foreground: '#ffffff'
+#  
+#  normal:
+#    black: '#000000'
+#    red: '#B00508'
+#    green: '#1B8F06'
+#    yellow: '#E9E700'
+#    blue: '#0858B5'
+#    magenta: '#830CB4'
+#    cyan: '#0CB488'
+#    white: '#9e9e9e'
+#
+#  bright:
+#    black: '#373737'
+#    red: '#FF1313'
+#    green: '#44FF3A'
+#    yellow: '#FFAE11'
+#    blue: '#0095FF'
+#    magenta: '#D400D2'
+#    cyan: '#28FCB8'
+#    white: '#ffffff'
+
+# Colors (Ayu Dark)
+colors:
+  # Default colors
+  primary:
+    background: '0x0A0E14'
+    foreground: '0xB3B1AD'
+
+  # Normal colors
+  normal:
+    black:   '0x01060E'
+    red:     '0xEA6C73'
+    green:   '0x91B362'
+    yellow:  '0xF9AF4F'
+    blue:    '0x53BDFA'
+    magenta: '0xFAE994'
+    cyan:    '0x90E1C6'
+    white:   '0xC7C7C7'
+
+  # Bright colors
+  bright:
+    black:   '0x686868'
+    red:     '0xF07178'
+    green:   '0xC2D94C'
+    yellow:  '0xFFB454'
+    blue:    '0x59C2FF'
+    magenta: '0xFFEE99'
+    cyan:    '0x95E6CB'
+    white:   '0xFFFFFF'
 
 # Gruvbox dark
 colors:
     primary:
-        background: '#282828'
+#        background: '#282828'
+#        background: '#3c3836'
+        background: '#32302f'
+#        background: '#000000'
         foreground: '#fbf1c7'
-    
+#    
     normal:
         black:      '#282828'
         red:        '#cc241d'

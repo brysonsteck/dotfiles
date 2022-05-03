@@ -94,7 +94,12 @@ function _git_prompt() {
 # [ bryson@hostname /current/path ]
 # $
 #export _PS1="\[$lgray\][ \[\e[1m$color1\]\u\[$color2\]@\[$color3\]\h \[$color4\]\w \[\e[0m$lgray\]]"
-export _PS1="\[\e[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\w \[$lgray\]]"
+#export _PS1="\[\e[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\w \[$lgray\]]"
+#export _PS2="\[$dgray\]"
+
+# [ bryson@hostname path ]
+# $
+export _PS1="\[\e[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\W \[$lgray\]]"
 export _PS2="\[$dgray\]"
 
 # define x titlebar

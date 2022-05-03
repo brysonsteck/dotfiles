@@ -1,18 +1,19 @@
 set nocompatible
-let g:gruvbox_guisp_fallback = "bg"
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_termcolors = '16'
 colorscheme gruvbox
+set ttymouse=sgr
+set number
 set bg:dark
 set mouse=a
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set linebreak
-set ttymouse=sgr
 set cursorline
 set backspace=indent,eol,start
 set laststatus=2
 set wildmenu
 set scrolloff=5
 set incsearch
-set relativenumber
 set ttimeout ttimeoutlen=25
 set clipboard=unnamedplus
 
@@ -20,6 +21,27 @@ set clipboard=unnamedplus
 autocmd FileType markdown setlocal spell
 
 execute pathogen#infect()
+
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jaxbot/semantic-highlight.vim'
+
+call plug#end()
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let s:semanticGUIColors = [ "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#928374", "#fb4934", "#b8bb26", "#fabd2f", "#83a598", "#d3869b", "#8ec07c", "#ebdbb2" ]
+
 
 " stolen from https://shapeshed.com/vim-statuslines/
 "function! GitBranch()
@@ -78,5 +100,9 @@ let g:lightline = {
   \   'right':  [ [ 'lineinfo' ],
   \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
   \ }, 
+  \ 'component_function': {
+  \   'cocstatus': 'coc#status',
+  \   'currentfunction': 'CocCurrentFunction'
+  \ },
   \ }
 set noshowmode
