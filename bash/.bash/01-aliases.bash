@@ -38,11 +38,13 @@ alias todo='vim ~/TODO.md'
 # go to directory with files from iPhone
 alias iPhone='cd /home/bryson/Downloads/from-iPhone'
 
-# common combinations when programming
+# common combinations
 alias gs='gs -dNOSAFER'
 alias django='python manage.py'
 alias smci='sudo make clean install'
 alias smi='sudo make install'
+alias mount='sudo mount'
+alias umount='sudo umount'
 
 # bash navigation
 alias add-alias='vim ~/.bash/01-aliases.bash; . ~/.bash_profile'
