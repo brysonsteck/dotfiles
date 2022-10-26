@@ -1,6 +1,12 @@
+filetype plugin on
+syntax enable
+let g:vimtex_compiler_method = 'arara'
+let maplocalleader = "\\"
+
 set nocompatible
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_termcolors = '16'
+let g:python_recommended_style = 0
 colorscheme gruvbox
 set ttymouse=sgr
 set number
@@ -15,17 +21,30 @@ set wildmenu
 set scrolloff=5
 set incsearch
 set ttimeout ttimeoutlen=25
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+set showtabline=2
+set undodir=~/.vim/undo-dir
+set undofile
 
 " turn on spell checker for all markdown files
 autocmd FileType markdown setlocal spell
-
-execute pathogen#infect()
+hi clear SpellBad                                                
+hi SpellBad cterm=underline                                      
+hi clear SpellRare                                               
+hi SpellRare cterm=underline                                     
+hi clear SpellCap                                                
+hi SpellCap cterm=underline                                      
+hi clear SpellLocal
+hi SpellLocal cterm=underline
 
 call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jaxbot/semantic-highlight.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -40,7 +59,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let s:semanticGUIColors = [ "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#928374", "#fb4934", "#b8bb26", "#fabd2f", "#83a598", "#d3869b", "#8ec07c", "#ebdbb2" ]
+"let s:semanticGUIColors = [ "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#928374", "#fb4934", "#b8bb26", "#fabd2f", "#83a598", "#d3869b", "#8ec07c", "#ebdbb2" ]
 
 
 " stolen from https://shapeshed.com/vim-statuslines/

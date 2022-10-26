@@ -3,6 +3,7 @@
 # 02-prompt.bash
 # bryson's gnarly bash prompt config
 #
+shopt -s histappend
 
 # color definitions
 black='\e[0;30m'
@@ -47,7 +48,7 @@ color4='\e[38;5;226m'
 function exit_code() {
   local ERROR="$?"
   if [[ ERROR -ne 0 ]]; then
-    echo -n ' \['"$RED"'\]'"$ERROR"''
+    echo -n '\['"$RED"'\]'"$ERROR"' '
   fi
 }
 
@@ -74,7 +75,7 @@ function _git_prompt() {
       echo local`"
     fi
     if ! [[ "$branch" =~ local ]]; then
-      echo -n '\['"$color"'\] { git: '"$ansi"''"$branch"' } '
+      echo -n '\['"$color"'\] ('"$ansi"''"$branch"') '
     fi
   fi
 }
@@ -99,12 +100,20 @@ function _git_prompt() {
 
 # [ bryson@hostname path ]
 # $
-export _PS1="\[\e[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\W \[$lgray\]]"
-export _PS2="\[$dgray\]"
+#export _PS1="\[\e[$lgray\][ \[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\W \[$lgray\]]"
+#export _PS2="\[$dgray\]"
+
+#export _PS1="\[\e[$lgray\]\[$LBLUE\]\u\[$lcyan\]@\[$GREEN\]\h \[$LYELLOW\]\W\[$lgray\]"
+
+# [ hostname ] Thu Mar 25, 10:00:00 AM, /dev/pts/0
+# { /current/path } 8 files, 64 KB (master)
+# $
+export _PS1="\[$lgray\][ \[$LBLUE\]\h\[$lgray\] ] \[$LCYAN\]\d, \[$GREEN\]\T"
+export _PS2="\[$lgray\]{ \[$LYELLOW\]\w\[$lgray\] }"
 
 # define x titlebar
 TITLEBAR='\[\033]0;\u@\h:\w ($(history 1 | cut -c 8-))\]'
 
 # apply prompt and functions
-export PROMPT_COMMAND='export PS1="$TITLEBAR${_status}${_PS1}$(exit_code)$(_git_prompt)\n${_PS2}\[$NC\]\$ "'
+export PROMPT_COMMAND='export PS1="$TITLEBAR$(exit_code)${_PS1}\n${_PS2}$(_git_prompt)\n\[$NC\]\$ ";history -a'
 

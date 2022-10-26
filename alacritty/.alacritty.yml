@@ -1,23 +1,23 @@
 font:
   normal:
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Regular
   bold:
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Bold
   italic:
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Italic
   bold_italic:
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Bold Italic
 
-  size: 12.5 
+  size: 11
 
 window:
     padding:
-        x: 10
-        y: 10
+        x: 7
+        y: 7
           #    opacity: 0.95
 
 #colors:
@@ -46,43 +46,43 @@ window:
 #    white: '#ffffff'
 
 # Colors (Ayu Dark)
-colors:
+#colors:
   # Default colors
-  primary:
-    background: '0x0A0E14'
-    foreground: '0xB3B1AD'
+  #  primary:
+  #  background: '0x0A0E14'
+  #  foreground: '0xB3B1AD'
 
   # Normal colors
-  normal:
-    black:   '0x01060E'
-    red:     '0xEA6C73'
-    green:   '0x91B362'
-    yellow:  '0xF9AF4F'
-    blue:    '0x53BDFA'
-    magenta: '0xFAE994'
-    cyan:    '0x90E1C6'
-    white:   '0xC7C7C7'
+  #normal:
+  #  black:   '0x01060E'
+  #  red:     '0xEA6C73'
+  #  green:   '0x91B362'
+  #  yellow:  '0xF9AF4F'
+  #  blue:    '0x53BDFA'
+  #  magenta: '0xFAE994'
+  #  cyan:    '0x90E1C6'
+  #  white:   '0xC7C7C7'
 
   # Bright colors
-  bright:
-    black:   '0x686868'
-    red:     '0xF07178'
-    green:   '0xC2D94C'
-    yellow:  '0xFFB454'
-    blue:    '0x59C2FF'
-    magenta: '0xFFEE99'
-    cyan:    '0x95E6CB'
-    white:   '0xFFFFFF'
+  #bright:
+  #  black:   '0x686868'
+  #  red:     '0xF07178'
+  #  green:   '0xC2D94C'
+  #  yellow:  '0xFFB454'
+  #  blue:    '0x59C2FF'
+  #  magenta: '0xFFEE99'
+  #  cyan:    '0x95E6CB'
+  #  white:   '0xFFFFFF'
 
 # Gruvbox dark
 colors:
     primary:
-#        background: '#282828'
+        background: '#282828'
 #        background: '#3c3836'
-        background: '#32302f'
+#        background: '#32302f'
 #        background: '#000000'
         foreground: '#fbf1c7'
-#    
+    
     normal:
         black:      '#282828'
         red:        '#cc241d'
@@ -102,6 +102,35 @@ colors:
         magenta:    '#d3869b'
         cyan:       '#8ec07c'
         white:      '#ebdbb2'
+
+# Colors (Gnome Terminal)
+#colors:
+  # Default colors
+  #  primary:
+  #  background: '#1e1e1e'
+  #  foreground: '#ffffff'
+
+  # Normal colors
+  #normal:
+  #  black:   '#171421'
+  #  red:     '#c01c28'
+  #  green:   '#26a269'
+  #  yellow:  '#a2734c'
+  #  blue:    '#12488b'
+  #  magenta: '#a347ba'
+  #  cyan:    '#2aa1b3'
+  #  white:   '#d0cfcc'
+
+  # Bright colors
+  #bright:
+  #  black:   '#5e5c64'
+  #  red:     '#f66151'
+  #  green:   '#33d17a'
+  #  yellow:  '#e9ad0c'
+  #  blue:    '#2a7bde'
+  #  magenta: '#c061cb'
+  #  cyan:    '#33c7de'
+  #  white:   '#ffffff'
 
 # Colors (Nord)
 #colors:

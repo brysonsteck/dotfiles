@@ -37,23 +37,25 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # start picom compositor
-picom --config ~/.config/picom.conf & 
+#picom --config ~/.config/picom.conf & 
 
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#spotifyd &
+
+#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # add network, battery, date and time to xsetroot
 #sh ~/bin/xsetloop-not-docked.sh &
 slstatus-not-docked &
 
 # reset backlight
-xbacklight -set 25 &
+light -S 25 &
 
 # set default audio device to be laptop speakers
 pacmd set-default-sink alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink &
 pacmd set-sink-volume alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink 0 &
 
 # set up wallpaper
-nitrogen --head=0 --set-zoom-fill ~/Pictures/Wallpapers/solid-gruvbox.png &
+feh --bg-fill ~/Pictures/Wallpapers/gruvbox_spacesuit.jpg &
 
 # start notifications daemon
 notification-daemon &
@@ -62,15 +64,23 @@ notification-daemon &
 xrdb -merge ~/.Xresources
 
 # make cursor disappear after a couple of seconds
-unclutter --idle 4 -root &
+unclutter -idle 3 -jitter 5 -root &
 
 # turn tearfree on
 xrandr --output eDP --auto --set TearFree on &
 
 # make sure wifi is back on
-nmcli radio wifi on &
+#nmcli radio wifi on &
+
+# run battery checker
+~/bin/battery.pl &
+
+# start keepassxc for passwords
+keepassxc &
 
 # start dwm
-#redshift -O3500; xset r rate 300 50; exec dwm
-xset r rate 300 50; exec /home/bryson/bin/startdwm.sh
+redshift &
+xset r rate 300 50
+exec /home/bryson/bin/startdwm.sh
+#exec dwm
 

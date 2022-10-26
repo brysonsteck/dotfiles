@@ -5,7 +5,7 @@
 #
 
 # expand history size
-export HISTSIZE=5000
+export HISTSIZE=100000
 
 # source global definitions
 if [ -f /etc/bashrc ]; then
