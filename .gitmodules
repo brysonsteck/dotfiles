@@ -1,6 +1,6 @@
 [submodule "dwm"]
 	path = dwm
   url = git@github.com:brysonsteck/dwm
-[submodule "gruvbox"]
-  path = vim/colors/gruvbox
-  url = git@github.com:morhetz/gruvbox
+[submodule "vim/colors/gruvbox"]
+	path = vim/colors/gruvbox
+	url = git@github.com:morhetz/gruvbox
