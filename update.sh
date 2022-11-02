@@ -10,3 +10,5 @@ cp ~/.vim/coc-settings.json ./vim
 cp ~/.xinitrc* ./x
 cp ~/.Xresources ./x
 
+git submodule update --remote --merge
+
