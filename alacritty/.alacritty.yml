@@ -20,6 +20,9 @@ window:
         y: 7
           #    opacity: 0.95
 
+mouse:
+  hide_when_typing: true
+
 #colors:
 #  primary:
 #    background: '#000000'

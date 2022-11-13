@@ -36,15 +36,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
   unset f
 fi
 
+# start notifications (dunst)
+/usr/bin/dunst &
+
 # start picom compositor
 #picom --config ~/.config/picom.conf & 
 
 #spotifyd &
 
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
 # add network, battery, date and time to xsetroot
-#sh ~/bin/xsetloop-not-docked.sh &
 slstatus-not-docked &
 
 # reset backlight
@@ -55,22 +55,16 @@ pacmd set-default-sink alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink &
 pacmd set-sink-volume alsa_output.pci-0000_03_00.6.HiFi__hw_Generic_1__sink 0 &
 
 # set up wallpaper
-feh --bg-fill ~/Pictures/Wallpapers/gruvbox_spacesuit.jpg &
-
-# start notifications daemon
-notification-daemon &
+feh --bg-fill ~/Pictures/Wallpapers/spacesuit-dithered.png
 
 # apply Xresources
 xrdb -merge ~/.Xresources
 
-# make cursor disappear after a couple of seconds
-unclutter -idle 3 -jitter 5 -root &
+# make cursor disappear after typing
+xbanish &
 
 # turn tearfree on
 xrandr --output eDP --auto --set TearFree on &
-
-# make sure wifi is back on
-#nmcli radio wifi on &
 
 # run battery checker
 ~/bin/battery.pl &
@@ -82,5 +76,3 @@ keepassxc &
 redshift &
 xset r rate 300 50
 exec /home/bryson/bin/startdwm.sh
-#exec dwm
-

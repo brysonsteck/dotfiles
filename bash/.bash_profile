@@ -8,7 +8,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-. /usr/share/autojump/autojump.bash
+#. /usr/share/autojump/autojump.bash
 
 export PATH
 complete -cf doas

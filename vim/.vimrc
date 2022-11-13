@@ -14,6 +14,7 @@ call plug#begin()
   Plug 'lervag/vimtex'
   Plug 'preservim/nerdtree'
   Plug 'itchyny/vim-gitbranch'
+  Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -32,16 +33,16 @@ set wildmenu
 set scrolloff=5
 set incsearch
 set ttimeout ttimeoutlen=25
-"set clipboard=unnamedplus
 set showtabline=2
 set undodir=~/.vim/undo-dir
 set undofile
 set backupdir=$HOME/.vim/backups
 set noshowmode
+set showcmd
+" set clipboard=unnamedplus
 
 " lets
 let g:vimtex_compiler_method = 'arara'
-let maplocalleader = "\\"
 let mapleader = " "
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_termcolors = '16'
@@ -62,10 +63,15 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>! :q!<CR>
 nnoremap <leader>x :wq<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>p :wincmd p<CR>
-nnoremap <leader>v :set paste! number! \| :NERDTreeToggle \| :wincmd p<CR>
+nnoremap <leader>v :set paste! number!<CR>
+nnoremap <leader>i :CocCommand clangd.switchSourceHeader<CR>
 
 " nerdtree stuff
 " Start NERDTree. If a file is specified, move the cursor to its window.
@@ -101,6 +107,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" lightline config
 let g:lightline = {
   \ 'colorscheme': 'gruvbox',
   \ 'active': {
@@ -108,7 +115,7 @@ let g:lightline = {
   \             [ 'filename', 'readonly', 'modified' ],
   \             [ 'gitbranch'] ],
   \   'right':  [ [ 'lineinfo' ],
-  \               [ 'fileformat', 'fileencoding', 'filetype' ],
+  \               [ 'fileformat', 'filetype' ],
   \               [ 'percent' ] ]
   \ }, 
   \ 'component_function': {

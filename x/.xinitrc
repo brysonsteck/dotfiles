@@ -37,53 +37,41 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
   unset f
 fi
 
+# start notifications (dunst)
+/usr/bin/dunst &
+
 # open picom compositor
 #picom --config ~/.config/picom.conf & 
 
 #spotifyd &
 
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-xset r rate 300 50 &
-xset r rate 300 50 &
-xset r rate 300 50 &
 # set up monitors
-#fixscreen
 sh ~/.screenlayout/screenlayout.sh &
 
 # set default audio device to be dock audio jack
-pulseaudio -k &
-pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo &
+pulseaudio -k && pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo &
 
 # add weather, date and time to xsetroot
 #sh ~/bin/xsetloop-docked.sh &
 slstatus &
 
-# set up wallpapers
-#wallpapers.sh &
-feh --bg-fill ~/Pictures/Wallpapers/leaves-3.jpg &
-
-# start notifications daemon
-notification-daemon &
-
 # apply Xresources
 xrdb -merge ~/.Xresources
 
-# make cursor disappear after a couple of seconds
-unclutter -idle 4 -root &
+# make cursor disappear after typing
+xbanish &
 
 # enable numlock
 numlockx &
 
-# turn off wifi, force ethernet
-#nmcli radio wifi off &
-
 # start keepassxc for passwords
 keepassxc &
+
+# set up wallpapers
+#wallpapers.sh &
+feh --bg-fill git/wallpapers-exorcist/gruvbox/canyon.jpg git/wallpapers-exorcist/gruvbox/canyon.jpg &
 
 # start dwm
 redshift &
 xset r rate 300 50
 exec /home/bryson/bin/startdwm.sh
-#exec dwm
-

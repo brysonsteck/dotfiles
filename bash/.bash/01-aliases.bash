@@ -31,6 +31,14 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias back='cd -'
 
+# local apps
+alias carmine-impact='cd /home/bryson/git/cardboard && ./cardboard_unix'
+alias celeste='cd /home/bryson/apps/celeste && ./Celeste.bin.x86_64'
+alias dont-move='cd /home/bryson/apps/dont-move && ./DontMove'
+alias friday-night-funkin='cd /home/bryson/apps/friday-night-funkin && ./Funkin'
+alias overland='cd /home/bryson/apps/overland && ./Overland.x86_64'
+alias sm64ex='cd /home/bryson/git/sm64ex/build/us_pc/./sm64.us.f3dex2e'
+
 # binary renames
 alias java='/usr/local/java/jdk-18.0.1.1/bin/java'
 alias java11='/usr/bin/java'
@@ -38,36 +46,40 @@ alias python='python3'
 alias g++='g++ --std=c++20'
 alias j='autojump'
 alias vim='vim -p'
+alias gs='gs -dNOSAFER'
+#alias gdb="gdb --tui"
+#alias spt="spotifyd && spt"
 
 # quick important file edits
 alias todo='vim ~/.todo/TODO.org'
 
-# go to directory with files from iPhone
-alias iPhone='cd /home/bryson/Downloads/from-iPhone'
-
 # common combinations
-alias gs='gs -dNOSAFER'
 alias django='python manage.py'
-alias smci='doas make clean install'
-alias smi='doas make install'
-#alias mount='sudo mount'
-#alias umount='sudo umount'
+alias smci='sudo make clean install'
+alias smi='sudo make install'
+alias library='xrandr --output HDMI-A-0 --auto --set TearFree on --output eDP --off && xset r rate 300 50'
+alias nolibrary='xrandr --output HDMI-A-0 --off --output eDP --auto'
 
 # bash navigation
 alias add-alias='vim ~/.bash/01-aliases.bash; . ~/.bash_profile'
 
+function search() {
+  find . -type f -exec grep ${1} {} \;
+}
+
+function ssh-pixel() {
+  ssh -p 8022 uO_14O@${1}
+}
+
 # common portage files
-alias package.use='doas vim /etc/portage/package.use'
-alias make.conf='doas vim /etc/portage/make.conf'
-alias package.license='doas vim /etc/portage/package.license'
+alias package.use='sudo vim /etc/portage/package.use'
+alias make.conf='sudo vim /etc/portage/make.conf'
+alias package.license='sudo vim /etc/portage/package.license'
 
 # other garbage
 alias fixwifi='sudo rc-service wpa_supplicant restart'
-#alias spt="spotifyd && spt"
+alias fixaudio='pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo'
 alias macos="cd /home/bryson/git/macOS-Simple-KVM && ./basic.sh"
 alias server="python3 /home/bryson/git/webserver/server.py"
-alias ssh-pixel="ssh -p 8022 uO_14O@${1}"
 alias emerge-update="sudo emerge --ask --verbose --update --deep --changed-use @world"
-#alias vim="nvim"
-#alias connect='nmcli d wifi connect'
-#alias listwifi='nmcli d wifi list'
+
